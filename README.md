@@ -1,1 +1,1 @@
-# ecg_capstone
+# ECG Capstone
