@@ -1,4 +1,4 @@
-# ECG Capstone
+# ECG Signal Classification via Fourier Transforms
 
 **Author**: Calvin Chan 
 
