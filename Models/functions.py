@@ -1,5 +1,6 @@
-import wfdb
 import numpy as np
+import wfdb
+
 
 def load_signal(path, metadata):
     """Loads whole ECG data set. Provide the path and metadata file.
@@ -29,7 +30,14 @@ def load_sample_signal(sample_size, path, metadata, freq='low'):
     >>> X_sample.shape, y_sample.shape
     ((1000, 3), (1000,))
     """
-    metadata = metadata.sample(sample_size)
+#     if unique == True:
+#         metadata = metadata.groupby('diagnostic_superclass').sample()
+#     else:
+#         metadata = metadata.sample(sample_size)
+    if sample_size <= 5:
+        metadata = metadata.groupby('diagnostic_superclass').sample(1)
+    else:
+        metadata = metadata.sample(sample_size)
 
     if freq == 'high':
         signals = [wfdb.rdsamp(path + temp_path) for temp_path in metadata['filename_hr']]
