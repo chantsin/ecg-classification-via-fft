@@ -4,6 +4,12 @@
 
 **Data**: The data set used for this project is called **PTB-XL** from **PhysioNet** and can be found [here](https://physionet.org/content/ptb-xl/1.0.3/).
 
+## Table of Contents
+- [Project Overview](#overview)
+- [Status](#status)
+- [Setup](#setup)
+
+<a id='overview'></a>
 ## Project Overview
 
 ### Problem Area
@@ -21,3 +27,20 @@ In this project, we will attempt to utilize data science techniques to read ECG 
 ### Data Description
 
 The dataset used for this project is called PTB-XL taken from PhysioNet. It contains 21799 12-lead ECG entries of 18869 unique patients collected using devices from Schiller AG. The signals were taken over the course of nearly seven years between October 1989 and June 1996. The dataset also contains a metadata file which includes patient information such as their sex, age, weight, as well as an annotation file which encodes the type of diagnosis for each ECG. 
+
+### Data Dictionary
+The dataset we are using includes two main files, ``
+
+<a id='status'></a>
+## Status
+
+### Current Progress
+Currently finishing off Sprint 2 for the project, which includes a cleaned version of our metadata. Thus far we have started to test our method of Fourier Transforms on a sample signal by removing low frequency noise associated with Baseline Wandering. We performed statistical analysis on our signals through ANOVA to justify our use of fourier transforms. Preliminary modelling has also commenced using a simple neural network architecture for classifying our five diagnostic superclasses, however accuracy scores do not show promising results. Autoencoders were also used in an attempt to reconstruct sample ECG signals, although the results indicate little learning is achieved even after measures were made to prevent oversampling. 
+
+### Next steps 
+Next steps include expanding Fourier Transforms for high frequency signals and applying the results to our full dataset before testing them on autoencoder and simple neural network model again. We will also try out new models such as CNNs and RNNs as previous attempts using these architectures by other individuals have led to positive results. 
+
+<a id='setup'></a>
+## Setup
+
+
