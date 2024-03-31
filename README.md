@@ -6,8 +6,9 @@
 
 ## Table of Contents
 - [Project Overview](#overview)
-- [Status](#status)
-- [Setup](#setup)
+- [Workflow Timeline](#workflow)
+- [Project Status](#status)
+- [Setup Requirements](#setup)
 
 <a id='overview'></a>
 ## Project Overview
@@ -31,7 +32,7 @@ The dataset used for this project is called PTB-XL taken from PhysioNet. It cont
 ### Data Dictionary
 The dataset we are using includes two main metadata files, `ptbxl_database.csv` which we will call **Metadata** and it contains the patients information, and `scp_statements.csv` which we will call **Annotation** containing the official SCP-ECG statements for diagnosis. Below we present the data dictionary for each file.
 
-- Metadata (`ptbxl_database.csv`):
+- **Metadata** (`ptbxl_database.csv`):
 <div align='center'>
 
 | Column                       | Data Types | Description                                                     |
@@ -65,7 +66,7 @@ The dataset we are using includes two main metadata files, `ptbxl_database.csv` 
 | filename_hr                  | string     | High sampling rate file path                                    |
 </div>
 
-- Annotation (`scp_statements.csv`):
+- **Annotation** (`scp_statements.csv`):
 <div align='center'>
 
 | Column                        | Data Types | Description                     |
@@ -84,7 +85,21 @@ The dataset we are using includes two main metadata files, `ptbxl_database.csv` 
 | DICOM code                    | string     | DICOM tags                      |
 </div>
 
+<a id='workflow'></a>
 ## Project Workflow
+1. **Data cleaning after combining Metadata and Annotation**
+    - Pulling SCP-ECG codes for diagnostic superclass
+2. **ECG denoising using Fourier Analysis**
+    - Removal of baseline wandering and powerline interference
+3. **Baseline modeling**
+    - Logistic Regression
+    - Simple ANN
+    - Autoencoder
+4. **Advanced modeling**
+    - CNN
+    - RNN
+5. **Model Evalutation**
+    - Choosing best model
 
 <a id='status'></a>
 ## Project Status
