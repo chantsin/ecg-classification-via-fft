@@ -84,6 +84,8 @@ The dataset we are using includes two main metadata files, `ptbxl_database.csv` 
 | DICOM code                    | string     | DICOM tags                      |
 </div>
 
+## Project Workflow
+
 <a id='status'></a>
 ## Project Status
 
