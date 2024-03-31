@@ -11,7 +11,7 @@
 - [Setup Requirements](#setup)
 
 <a id='overview'></a>
-## Project Overview
+## 1 - Project Overview
 
 ### Problem Area
 
@@ -86,7 +86,7 @@ The dataset we are using includes two main metadata files, `ptbxl_database.csv` 
 </div>
 
 <a id='workflow'></a>
-## Project Workflow
+## 2 - Project Workflow
 1. **Data cleaning after combining Metadata and Annotation**
     - Pulling SCP-ECG codes for diagnostic superclass
 2. **ECG denoising using Fourier Analysis**
@@ -102,7 +102,7 @@ The dataset we are using includes two main metadata files, `ptbxl_database.csv` 
     - Choosing best model
 
 <a id='status'></a>
-## Project Status
+## 3 - Project Status
 
 ### Current Progress
 Currently finishing off Sprint 2 for the project, which includes a cleaned version of our metadata. Thus far we have started to test our method of Fourier Transforms on a sample signal by removing low frequency noise associated with Baseline Wandering. We performed statistical analysis on our signals through ANOVA to justify our use of fourier transforms. Preliminary modelling has also commenced using a simple neural network architecture for classifying our five diagnostic superclasses, however accuracy scores do not show promising results. Autoencoders were also used in an attempt to reconstruct sample ECG signals, although the results indicate little learning is achieved even after measures were made to prevent oversampling. 
@@ -111,7 +111,7 @@ Currently finishing off Sprint 2 for the project, which includes a cleaned versi
 Next steps include expanding Fourier Transforms for high frequency signals and applying the results to our full dataset before testing them on autoencoder and simple neural network model again. We will also try out new models such as CNNs and RNNs as previous attempts using these architectures by other individuals have led to positive results. 
 
 <a id='setup'></a>
-## Setup
+## 4 - Setup
 
 ### Environment Download
 To run the notebooks, the appropriate packages needs to be installed. We have included all the packages used for this project in the environment file `ecgcap.yml`. 
