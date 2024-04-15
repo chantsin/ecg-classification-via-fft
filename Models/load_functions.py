@@ -6,8 +6,8 @@ import ast
 def load_signal(path, metadata, freq='low'):
     """Loads whole ECG data set. Provide the path and metadata file.
     
-    Examples
-    --------
+    Example
+    -------
     >>> X, y = load_signal('../data/physionet.org/files/ptb-xl/1.0.3/', metadata)
     >>> X.shape, y.shape
     ((100, 3), (100,))
@@ -29,8 +29,8 @@ def load_sample_signal(sample_size, path, metadata, random_state=None, freq='low
     set depending on user needs. Option to look at high frequency data as well 
     (5000 sample points), default is low (1000 sample points).
 
-    Examples
-    --------
+    Example
+    -------
     >>> X_sample, y_sample = load_sample_signal(1000, path, metadata, random_state=42)
     >>> X_sample.shape, y_sample.shape
     ((1000, 3), (1000,))
@@ -50,3 +50,22 @@ def load_sample_signal(sample_size, path, metadata, random_state=None, freq='low
     y_data = metadata['diagnostic_superclass']
 
     return X_data, y_data
+
+def binary(diagnostic_list):
+    """Divides diagnostic superclasses into binary classification, normal vs 
+    abnormal. Normal superclasses are retained as normal, everything else
+    including classes with a mixture of normal are considered abnormal. 
+    
+    Example
+    -------
+    >>> binary("['STTC']")
+    'ABNO'
+    >>> binary("['NORM']")
+    'NORM'
+    
+    """
+    if ast.literal_eval(diagnostic_list) != ['NORM']:
+        diagnostic_list = 'ABNO'
+    else:
+        diagnostic_list = 'NORM'
+    return diagnostic_list
