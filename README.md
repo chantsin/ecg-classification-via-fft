@@ -16,7 +16,7 @@
 
 ### Problem Area
 
-Biomedical signals has always been an important aspect of the medical field. From medical diagnosis and treatment of patients to researching and developing drugs, it has helped many of those who were in need. An important aspect of why it works is because of its ability to capture many valuable information about the physiological state of the body that medical professions would not have known otherwise. However, whether this information is transferred to good use or not solely depends on the physicians ability to read the signal. In this project, we will be focusing on electrocardiograms (ECGs or EKGs) which is responsible for recording electrical activity in the heart. A systematic review and meta-analysis published in 2020 looked at 78 studies that assessed the accuracy of ECG interpretations by physicians with different levels of training and specialization, including medical students, residents, physicians in non-cardiology practice, and cardiologists. It was found that the accuracy scores varied significantly between the different physician levels, ranging from 4% to 95%. This poses a significant problem for patients and specialists as different ECG results can lead to vastly different decision and outcomes. 
+Biomedical signals has always been an important aspect of the medical field. From medical diagnosis and treatment of patients to researching and developing drugs, it has helped many of those who were in need. An important aspect of why it works is because of its ability to capture many valuable information about the physiological state of the body that medical professions would not have known otherwise. However, whether this information is transferred to good use or not solely depends on the physicians ability to read the signal. In this project, we will be focusing on electrocardiograms (ECGs or EKGs) which is responsible for recording electrical activity in the heart. A systematic review and meta-analysis published in 2020 looked at 78 studies that assessed the accuracy of ECG interpretations by physicians with different levels of training and specialization, including medical students, residents, physicians in non-cardiology practice, and cardiologists. It was found that the accuracy scores varied significantly between the different physician levels, ranging from 4% to 95% [[1]](#1). This poses a significant problem for patients and specialists as different ECG results can lead to vastly different decision and outcomes. 
 
 ### Those Affected
 
@@ -142,3 +142,21 @@ conda env create -n ecgcap -f ecgcap.yml
 ### Data Set Download
 The data used for this project can be found in the PhysioNet link above, although the data folder can also be downloaded from [here](https://drive.google.com/drive/folders/1Ju1yhHguvVVcAEAf3lyz-NFchx71L54s?usp=drive_link) . With the data folder beside the other directories, the code cells in the notebooks should be running without issue.  
 
+## References
+<a id='1'></a>
+[1] Cook, D. A., Oh, S. Y., & Pusic, M. V. (2020). Accuracy
+of Physicians’ Electrocardiogram Interpretations: A Systematic Review
+and Meta-analysis. JAMA internal medicine, 180(11), 1461–1471.
+https://doi.org/10.1001/jamainternmed.2020.3989 
+
+<a id='2'></a>
+[2] Wagner, P., Strodthoff, N., Bousseljot, RD. et al. PTB-XL, a large publicly available electrocardiography dataset. Sci Data 7, 154 (2020). https://doi.org/10.1038/s41597-020-0495-6
+
+<a id='3'></a>
+[3] Śmigiel, S., Pałczyński, K., & Ledziński, D. (2021). ECG Signal Classification Using Deep Learning Techniques Based on the PTB-XL Dataset. Entropy (Basel, Switzerland), 23(9), 1121. https://doi.org/10.3390/e23091121
+
+<a id='4'></a>
+[4] Meek, S., & Morris, F. (2002). ABC of clinical electrocardiography.Introduction. I-Leads, rate, rhythm, and cardiac axis. BMJ (Clinical research ed.), 324(7334), 415–418. https://doi.org/10.1136/bmj.324.7334.415
+
+<a id='5'></a>
+[5] Dave, T., & Pandya, U. (2018). Simultaneous monitoring of motion ECG of two subjects using Bluetooth Piconet and baseline drift. Biomedical engineering letters, 8(4), 365–371. https://doi.org/10.1007/s13534-018-0081-4
