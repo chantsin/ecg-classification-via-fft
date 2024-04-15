@@ -13,6 +13,7 @@ def baseline_removal(sig, freq_start, freq_stop, signal_samp_freq='low'):
 
     """
     sig = np.array(sig)
+    
     ##### PARAMETER SETTING
     
     # High Frequency Parameters
@@ -70,6 +71,7 @@ def high_freq_removal(sig, freq_start, freq_stop=None, signal_samp_freq='low'):
 
     """
     sig = np.array(sig)
+    
     ##### PARAMETER SETTING
     
     # High Frequency Parameters
