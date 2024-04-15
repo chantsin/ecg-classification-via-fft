@@ -125,7 +125,7 @@ This last notebook contains our advanced modeling where we use Recurrent Neural 
 ## 4 - Project Status
 
 ### Current Progress
-This project has come to its ending phase. All notebooks are being uploaded and are available to the public subject to license restrictions. However, further updates are possible in the near future as there are more possible steps this project possible. 
+This project has come to its ending phase. All notebooks are being uploaded and are available to the public subject to license restrictions. However, further updates are possible in the near future as there are more possible steps for this project. 
 
 ### Next steps 
 As this project is ending its last phase, Convolutional Neural Networks have not been implemented yet. As such the next step would be to implement CNNs and see how they perform in contrast to RNNs and the other models. 
