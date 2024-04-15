@@ -7,6 +7,7 @@
 ## Table of Contents
 - [Project Overview](#overview)
 - [Workflow Timeline](#workflow)
+- [Notebooks](#notebooks)
 - [Project Status](#status)
 - [Setup Requirements](#setup)
 
@@ -101,8 +102,27 @@ The dataset we are using includes two main metadata files, `ptbxl_database.csv` 
 5. **Model Evalutation**
     - Choosing best model
 
+<a id='notebooks'></a>
+## 3 - Notebooks
+This project is divided into 5 main notebooks and are structured as follows. The notebooks are ordered by the number assigned to each and should be read in that order. 
+
+1. **Metadata Annotations Cleaning**: 
+This first notebook includes combining two data files, one with patient information and the other with the patients ECG diagnostic. We also implement some preliminary exploratory data analysis, taking a look inside what kind of data we are dealing with. 
+
+2. **ECG Cleaning**:
+In this next notebook, we go over the ECG signals and perform cleaning on them. The main tool we are using to clean our signals is Fourier Transforms, by implementing them into functions, we allow the user to explicitly remove frequency ranges in Fourier Space, effectively translating to signal denoising in time.
+
+3. **Baseline Modeling**:
+For baseline modeling, we use Logistic Regression and a Simple Neural Network as our choice. We utilize the method of binning our ECG signals based on amplitude before feeding them into our models. We also adjusted our target classes by dividing it into either multiclass classification or binary classification. 
+
+4. **Autoencoders**:
+As a detour, we experimented our works in autoencoders, utilizing the neural network architecture to see how much it can learn about ECG signals and whether it can reconstruct our input signals or not. Results indicate that it has trouble extracting important features in our data set without overfitting.
+
+5. **Recurrent Neural Networks**:
+This last notebook contains our advanced modeling where we use Recurrent Neural Networks to classify our data. Without using binning, we use the raw signals as RNNs process data in sequence allowing effect learning for time series signals like ours. 
+
 <a id='status'></a>
-## 3 - Project Status
+## 4 - Project Status
 
 ### Current Progress
 Currently finishing off Sprint 2 for the project, which includes a cleaned version of our metadata. Thus far we have started to test our method of Fourier Transforms on a sample signal by removing low frequency noise associated with Baseline Wandering. We performed statistical analysis on our signals through ANOVA to justify our use of fourier transforms. Preliminary modelling has also commenced using a simple neural network architecture for classifying our five diagnostic superclasses, however accuracy scores do not show promising results. Autoencoders were also used in an attempt to reconstruct sample ECG signals, although the results indicate little learning is achieved even after measures were made to prevent oversampling. 
@@ -111,8 +131,11 @@ Currently finishing off Sprint 2 for the project, which includes a cleaned versi
 Next steps include expanding Fourier Transforms for high frequency signals and applying the results to our full dataset before testing them on autoencoder and simple neural network model again. We will also try out new models such as CNNs and RNNs as previous attempts using these architectures by other individuals have led to positive results. 
 
 <a id='setup'></a>
-## 4 - Setup
+## 5 - Setup
 
 ### Environment Download
 To run the notebooks, the appropriate packages needs to be installed. We have included all the packages used for this project in the environment file `ecgcap.yml`. 
+
+### Data Set Download
+The data used for this project can be found in the PhysioNet link above. The data folder can also be downloaded from [here](https://drive.google.com/drive/folders/1Ju1yhHguvVVcAEAf3lyz-NFchx71L54s?usp=drive_link) . 
 
