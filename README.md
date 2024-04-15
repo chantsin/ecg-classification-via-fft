@@ -125,17 +125,20 @@ This last notebook contains our advanced modeling where we use Recurrent Neural 
 ## 4 - Project Status
 
 ### Current Progress
-Currently finishing off Sprint 2 for the project, which includes a cleaned version of our metadata. Thus far we have started to test our method of Fourier Transforms on a sample signal by removing low frequency noise associated with Baseline Wandering. We performed statistical analysis on our signals through ANOVA to justify our use of fourier transforms. Preliminary modelling has also commenced using a simple neural network architecture for classifying our five diagnostic superclasses, however accuracy scores do not show promising results. Autoencoders were also used in an attempt to reconstruct sample ECG signals, although the results indicate little learning is achieved even after measures were made to prevent oversampling. 
+This project has come to its ending phase. All notebooks are being uploaded and are available to the public subject to license restrictions. However, further updates are possible in the near future as there are more possible steps this project possible. 
 
 ### Next steps 
-Next steps include expanding Fourier Transforms for high frequency signals and applying the results to our full dataset before testing them on autoencoder and simple neural network model again. We will also try out new models such as CNNs and RNNs as previous attempts using these architectures by other individuals have led to positive results. 
+As this project is ending its last phase, Convolutional Neural Networks have not been implemented yet. As such the next step would be to implement CNNs and see how they perform in contrast to RNNs and the other models. 
 
 <a id='setup'></a>
 ## 5 - Setup
 
 ### Environment Download
-To run the notebooks, the appropriate packages needs to be installed. We have included all the packages used for this project in the environment file `ecgcap.yml`. 
+To run the notebooks, the appropriate packages needs to be installed. We have included all the packages used for this project in the environment file `ecgcap.yml`. To download the environment on your computer, run the following code in your terminal
+```
+conda env create -n ecgcap -f ecgcap.yml
+```
 
 ### Data Set Download
-The data used for this project can be found in the PhysioNet link above. The data folder can also be downloaded from [here](https://drive.google.com/drive/folders/1Ju1yhHguvVVcAEAf3lyz-NFchx71L54s?usp=drive_link) . 
+The data used for this project can be found in the PhysioNet link above, although the data folder can also be downloaded from [here](https://drive.google.com/drive/folders/1Ju1yhHguvVVcAEAf3lyz-NFchx71L54s?usp=drive_link) . With the data folder beside the other directories, the code cells in the notebooks should be running without issue.  
 
