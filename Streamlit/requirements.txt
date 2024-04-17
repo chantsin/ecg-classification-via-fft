@@ -6,3 +6,4 @@ numpy==1.26.4
 pandas==2.2.2
 streamlit==1.33.0
 wfdb==4.1.2
+tensorflow==2.9
