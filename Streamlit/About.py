@@ -91,8 +91,8 @@ samp_ecg = pd.DataFrame(
 )
 
 # col1, col2, col3, col4, col5 = st.columns(5)
-# with col1:
-#     st.line_chart(samp_ecg, x='time', 
+# with col2:
+#     st.line_chart(samp_ecg, x='Time', 
 #                 y=['Original ECG', 'Denoised ECG'], 
 #                 color=["#FF0000", "#0000FF"],
 #                 width=900,
@@ -125,3 +125,6 @@ chart2 = alt.Chart(samp_ecg).mark_line(color='blue').encode(
 chart = alt.layer(chart1, chart2)
 
 st.altair_chart(chart, theme="streamlit", use_container_width=True)
+
+       
+
