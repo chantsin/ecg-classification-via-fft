@@ -3,6 +3,8 @@ import pandas as pd
 import numpy as np
 import joblib
 import pickle
+from keras.models import load_model
+import keras
 
 st.sidebar.markdown("# ECG Prediction")
 st.sidebar.markdown(
@@ -20,7 +22,14 @@ metadata = pd.read_csv('../data/cleaned_metadata.csv')
 # model = pickle.load(open('../Models/rnn_binary.pkl', 'rb'))
 
 # Load the model using joblib
-model = joblib.load('../Models/rnn_binary.pkl')
+# model = joblib.load('../Models/new_model_2.pkl')
+
+# Load model using keras
+# model = load_model('../Models/new_model_2.pkl')
+
+from keras.initializers import Orthogonal
+initializer = 'Orthogonal'
+loaded_model = load_model('../Models/new_model_2.h5')
 
 ##### USER INPUT SELECTION #####
 

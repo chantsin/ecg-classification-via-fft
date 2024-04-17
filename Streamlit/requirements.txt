@@ -1,0 +1,8 @@
+altair==5.3.0
+joblib==1.4.0
+keras==2.7.0
+matplotlib==3.8.2
+numpy==1.26.4
+pandas==2.2.2
+streamlit==1.33.0
+wfdb==4.1.2
