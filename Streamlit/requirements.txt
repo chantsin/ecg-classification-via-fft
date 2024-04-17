@@ -3,7 +3,7 @@ joblib==1.4.0
 keras==2.7.0
 matplotlib== 3.7.5
 numpy==1.24.4
-pandas==2.2.2
+pandas==2.0.3
 streamlit==1.33.0
 wfdb==4.1.2
 tensorflow==2.12.0
