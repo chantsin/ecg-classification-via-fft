@@ -1,1 +1,2 @@
 matplotlib==3.7.5
+joblib==1.3.2
