@@ -9,9 +9,9 @@ import joblib
 import wfdb
 import altair as alt
 
-# import sys
-# sys.path.append('..')
-# from Notebooks import ecg_cleaning as c
+import sys
+sys.path.append('..')
+from Notebooks import ecg_cleaning as c
 
 # Set app title 
 
@@ -19,7 +19,7 @@ main_title = 'ECG Classification'
 
 st.set_page_config(
     page_title=main_title, 
-    page_icon="🧊",
+    page_icon="🫀",
     layout='centered')
 
 
@@ -101,20 +101,9 @@ samp_ecg = pd.DataFrame(
 
 st.markdown("#### Example ECG Signal")
 
-### SAMPLE ECG PLOT
-# st.line_chart(
-#     samp_ecg, 
-#     x='Time', 
-#     y=['Original ECG', 'Denoised ECG'], 
-#     color=["#FF0000", "#0000FF"],
-#     width=700,
-#     height=400,
-#     use_container_width=True
-# ) 
-
 chart1 = alt.Chart(samp_ecg).mark_line(color='red').encode(
     x=alt.X('Time'),
-    y=alt.Y('Original ECG'),
+    y=alt.Y('Original ECG')
 ).interactive()
 
 chart2 = alt.Chart(samp_ecg).mark_line(color='blue').encode(
@@ -126,5 +115,7 @@ chart = alt.layer(chart1, chart2)
 
 st.altair_chart(chart, theme="streamlit", use_container_width=True)
 
+######################### INTRO TO FOURIER TRANSFORMS ##########################
 
+st.markdown("""### A Brief Introduction to Fourier Transforms""")
 

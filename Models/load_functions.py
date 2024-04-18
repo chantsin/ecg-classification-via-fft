@@ -69,3 +69,22 @@ def binary(diagnostic_list):
     else:
         diagnostic_list = 'NORM'
     return diagnostic_list
+
+def grab_sample(age, sex, height, weight, path, metadata):
+    
+    metadata = metadata[metadata['age'] == age]
+    metadata = metadata[metadata['sex'] == sex]
+    metadata = metadata[metadata['height'] == height]
+    metadata = metadata[metadata['weight'] == weight]
+    
+    if metadata.shape[0] == 0:
+        print("No sample ECG with these attributes!")
+    else:
+        temp_path = metadata.sample()['filename_lr'].iloc[0]
+    
+        signals = wfdb.rdsamp(path + temp_path, channels=[1])
+        X_data = np.array(signals[0])
+    
+        return X_data
+    
+    
