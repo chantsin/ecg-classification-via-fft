@@ -24,6 +24,15 @@ st.set_page_config(
 
 
 st.sidebar.markdown("# About My Capstone")
+st.sidebar.markdown("My capstone project utilizes data science techniques to \
+                    extract key features that distinguish between a normal \
+                    ECG and an abnormal one. ")
+st.sidebar.markdown("Using the model, I am able to \
+                    whether new ECGs have any abnormalities shown in them and \
+                    tell you how your heart is doing. ")
+st.sidebar.markdown("Utilizing Recurrent Neural Networks or RNNs as my model, \
+                    I am able to predict ECGs with an accuracy of over 80%, \
+                    giving confidence to users about their health.")
 
 st.title('ECG Classification via Fourier Transforms 🫀')
 
@@ -85,8 +94,10 @@ signal_bl = c.baseline_removal(signals, freq_start=0.1, freq_stop=1.5)
 samp_ecg = pd.DataFrame(
     {
         'Time': time,
+        'Frequency': freq,
         'Original ECG': signals, 
-        'Denoised ECG': signal_bl
+        'Denoised ECG': signal_bl,
+        'Fourier Transformed ECG': np.abs(signal_fft)
     }
 )
 
@@ -101,14 +112,16 @@ samp_ecg = pd.DataFrame(
 
 st.markdown("#### Example ECG Signal")
 
-chart1 = alt.Chart(samp_ecg).mark_line(color='red').encode(
+chart1 = alt.Chart(samp_ecg).mark_line().encode(
     x=alt.X('Time'),
-    y=alt.Y('Original ECG')
+    y=alt.Y('Original ECG'),
+    color=alt.value('blue')
 ).interactive()
 
-chart2 = alt.Chart(samp_ecg).mark_line(color='blue').encode(
+chart2 = alt.Chart(samp_ecg).mark_line().encode(
     x=alt.X('Time'),
-    y=alt.Y('Denoised ECG')
+    y=alt.Y('Denoised ECG'),
+    color=alt.value('red'),
 ).interactive()
 
 chart = alt.layer(chart1, chart2)
@@ -118,4 +131,37 @@ st.altair_chart(chart, theme="streamlit", use_container_width=True)
 ######################### INTRO TO FOURIER TRANSFORMS ##########################
 
 st.markdown("""### A Brief Introduction to Fourier Transforms""")
+
+st.markdown("""
+
+Let me give you a brief introduction into what Fourier Transforms is and why 
+we are talking about it! \
+
+Fourier Transforms is a mathematical tool that is used in signal processing, 
+and in our case the signal is the ECG itself. 
+            
+Often times when we are taking medical readings these signals can be obscured by
+noise, that is signals not coming from the source we are trying to measure. When
+recording ECG signals this might be in the form of the persons arm moving or 
+body shifting when they are being recorded, or it can also come from our lungs
+when we breath. These types of noise can make interpreting an ECG hard, and this
+is where Fourier Transforms come in. 
+            
+Knowing that these signals have a certain pattern to them, we can explicitly 
+remove them from our signal through the procedure of a Fourier Analysis. Signals
+are usually taken over time. What Fourier Analysis does is look at what 
+frequencies make up that signal instead of looking at it over time. Since we 
+know that certain frequencies are associated with those noise, we can remove 
+those frequencies being looking at the signal again over time.
+""")
+
+st.markdown("#### Fourier Transform of ECG Signal")
+
+chart3 = alt.Chart(samp_ecg).mark_line().encode(
+    x=alt.X('Frequency'),
+    y=alt.Y('Fourier Transformed ECG')
+).interactive()
+
+st.altair_chart(chart3, theme="streamlit", use_container_width=True)
+
 
