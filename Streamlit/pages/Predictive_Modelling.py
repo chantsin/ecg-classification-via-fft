@@ -16,9 +16,15 @@ st.title("ECG Prediction")
 
 st.sidebar.markdown("# ECG Prediction")
 st.sidebar.markdown(
-"Given an ECG signal, we can use our model to predict the diagnostic of the \
-with high accuracy."
-)
+"Given an ECG signal, I can use my RNN model to predict the diagnostic of that \
+individual with high accuracy (+80%).")
+st.sidebar.markdown("Some sample ECGs are with the following parameters:")
+st.sidebar.markdown("56, F, 161, 63")
+st.sidebar.markdown("25, M, 173.3, 83")
+st.sidebar.markdown("23, F, 161, 63")
+st.sidebar.markdown("49, F, 161, 58")
+st.sidebar.markdown("55, M, 173.3, 83")
+
 
 ############################# PATIENT INFO FILE ################################
 
@@ -34,14 +40,10 @@ age = st.selectbox(
 )
 st.write(f'You selected: {age}.')
 
-# Filter Age
-# sub_metadata = metadata[metadata['age'] == age]
-
 # Sex
 sex = st.selectbox(
     'Sex',
     ('Male', 'Female')
-    # tuple(sub_metadata['sex'].unique())
 )
 st.write(f'You selected: {sex}.')
 
@@ -49,8 +51,6 @@ if sex == 'Male':
     s = 0
 else:
     s = 1
-
-#metadata = metadata[metadata['sex'] == s]
 
 # Height
 height = st.selectbox(
@@ -68,7 +68,12 @@ st.write(f'You selected: {weight} kg.')
 
 ############################## GRAB SAMPLE ECG #################################
 
-signal = f.grab_sample(float(age), s, float(height), float(weight), path, metadata)
+signal = f.grab_sample(float(age), 
+                       s, 
+                       float(height), 
+                       float(weight), 
+                       path, 
+                       metadata)
 
 if signal is None:
     st.write("We do not have a signal with these parameters! Please try \
@@ -138,7 +143,8 @@ else:
 
     signal_bl = c.baseline_removal(signals, freq_start=0.1, freq_stop=1.5)
 
-    prediction = rnn_model_2.predict(signal_bl.reshape(-1, 1000, 1).astype("float"))
+    prediction = rnn_model_2.predict(
+        signal_bl.reshape(-1, 1000, 1).astype("float"))
     binary_array = (prediction > 0.5).astype(int).reshape(-1)
 
     st.markdown("#### Results")
@@ -150,17 +156,14 @@ else:
         
         st.markdown(
             "#### <div style='text-align: center'> \
-                Your heart looks great! </div>", \
+                Your heart looks great! </div>", 
                 unsafe_allow_html=True
             )
         
     else: 
         st.markdown(
-            "#### <div style='text-align: center'>\
-                Consider booking for a checkup sometime soon! </div>", \
+            "#### <div style='text-align: center'> \
+                We predicted something unusual! Consider booking an \
+                appointment with your doctor for a checkup soon! </div>", 
                 unsafe_allow_html=True \
             )
-
-
-
-
