@@ -8,10 +8,9 @@ import streamlit as st
 import joblib
 import wfdb
 import altair as alt
+import plotly.graph_objects as go 
 
-import sys
-sys.path.append('..')
-from Notebooks import ecg_cleaning as c
+from utils import ecg_cleaning as c
 
 # Set app title 
 
@@ -24,12 +23,12 @@ st.set_page_config(
 
 
 st.sidebar.markdown("# About My Capstone")
-st.sidebar.markdown("My capstone project utilizes data science techniques to \
-                    extract key features that distinguish between a normal \
-                    ECG and an abnormal one. ")
-st.sidebar.markdown("Using the model, I am able to \
-                    whether new ECGs have any abnormalities shown in them and \
-                    tell you how your heart is doing. ")
+st.sidebar.markdown("My capstone project utilizes machine learning (ML) \
+                    algorithms to extract key features that distinguish \
+                    between a normal and abnormal ECG. ")
+st.sidebar.markdown("Using the model, I am able to predict whether new ECGs \
+                    have any abnormalities shown in them and tell you how your \
+                    heart is doing. ")
 st.sidebar.markdown("Utilizing Recurrent Neural Networks or RNNs as my model, \
                     I am able to predict ECGs with an accuracy of over 80%, \
                     giving confidence to users about their health.")
@@ -93,40 +92,67 @@ signal_bl = c.baseline_removal(signals, freq_start=0.1, freq_stop=1.5)
 # Plotting sample ECG signal and the denoised version 
 samp_ecg = pd.DataFrame(
     {
-        'Time': time,
-        'Frequency': freq,
+        'Time (seconds)': time,
         'Original ECG': signals, 
         'Denoised ECG': signal_bl,
-        'Fourier Transformed ECG': np.abs(signal_fft)
+        'Amplitude': np.abs(signal_fft)
     }
 )
 
-# col1, col2, col3, col4, col5 = st.columns(5)
-# with col2:
-#     st.line_chart(samp_ecg, x='Time', 
-#                 y=['Original ECG', 'Denoised ECG'], 
-#                 color=["#FF0000", "#0000FF"],
-#                 width=900,
-#                 height=500,
-#                 use_container_width=False) 
-
 st.markdown("#### Example ECG Signal")
 
-chart1 = alt.Chart(samp_ecg).mark_line().encode(
-    x=alt.X('Time'),
-    y=alt.Y('Original ECG'),
-    color=alt.value('blue')
-).interactive()
+# chart1 = alt.Chart(samp_ecg).mark_line().encode(
+#     x=alt.X('Time (seconds)'),
+#     y=alt.Y('Original ECG').title('Amplitude (mV)'),
+#     color=alt.value('red')
+# ).interactive()
 
-chart2 = alt.Chart(samp_ecg).mark_line().encode(
-    x=alt.X('Time'),
-    y=alt.Y('Denoised ECG'),
-    color=alt.value('red'),
-).interactive()
+# chart2 = alt.Chart(samp_ecg).mark_line().encode(
+#     x=alt.X('Time (seconds)'),
+#     y=alt.Y('Denoised ECG').title('Amplitude (mV)'),
+#     color=alt.value('blue'),
+# ).interactive()
 
-chart = alt.layer(chart1, chart2)
+# chart = alt.layer(chart1, chart2)
 
-st.altair_chart(chart, theme="streamlit", use_container_width=True)
+# st.altair_chart(chart, theme="streamlit", use_container_width=True)
+
+# Create traces for the line graphs
+trace1 = go.Scatter(x=time, 
+                    y=signals, 
+                    mode='lines', 
+                    name='Original ECG',
+                    line={'color': 'blue'})
+trace2 = go.Scatter(x=time, 
+                    y=signal_bl, 
+                    mode='lines', 
+                    name='Denoised ECG',
+                    line={'color': 'red'})
+
+layout = go.Layout(
+    xaxis=dict(
+        range=[0, 10],
+        dtick=1,
+        title='Time (seconds)',
+        showgrid=True,  # Show gridlines on the x-axis
+        gridcolor='rgba(0,0,0,0.1)',  # Set gridline color (optional)
+        gridwidth=1  # Set gridline width (optional)
+    ),
+    yaxis=dict(
+        range=[-1.5, 2],
+        dtick=1,
+        title='Amplitude (mV)',
+        showgrid=True,  # Show gridlines on the y-axis
+        gridcolor='rgba(0,0,0,0.1)',  # Set gridline color (optional)
+        gridwidth=1  # Set gridline width (optional)
+    )
+)
+
+# Create a Plotly figure with both line graphs
+fig = go.Figure([trace1, trace2], layout=layout)
+
+# Display the figure using Streamlit
+st.plotly_chart(fig, theme="streamlit", use_container_width=True)
 
 ######################### INTRO TO FOURIER TRANSFORMS ##########################
 
@@ -157,11 +183,30 @@ those frequencies being looking at the signal again over time.
 
 st.markdown("#### Fourier Transform of ECG Signal")
 
-chart3 = alt.Chart(samp_ecg).mark_line().encode(
-    x=alt.X('Frequency'),
-    y=alt.Y('Fourier Transformed ECG')
-).interactive()
+trace3 = go.Scatter(x=freq, 
+                    y=np.abs(signal_fft), 
+                    mode='lines',
+                    line={'color': 'blue'})
 
-st.altair_chart(chart3, theme="streamlit", use_container_width=True)
+layout2 = go.Layout(
+    xaxis=dict(
+        title='Frequency (Hz)',
+        showgrid=True,  # Show gridlines on the x-axis
+        gridcolor='rgba(0,0,0,0.1)',  # Set gridline color (optional)
+        gridwidth=1  # Set gridline width (optional)
+    ),
+    yaxis=dict(
+        title='Amplitude',
+        showgrid=True,  # Show gridlines on the y-axis
+        gridcolor='rgba(0,0,0,0.1)',  # Set gridline color (optional)
+        gridwidth=1  # Set gridline width (optional)
+    )
+)
+
+# Create a Plotly figure with both line graphs
+fig2 = go.Figure([trace3], layout=layout2)
+
+# Display the figure using Streamlit
+st.plotly_chart(fig2, theme="streamlit", use_container_width=True)
 
 

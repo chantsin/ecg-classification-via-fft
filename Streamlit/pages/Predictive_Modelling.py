@@ -5,25 +5,21 @@ import keras
 import wfdb
 import altair as alt
 
-import sys
-sys.path.append('..')
-from Notebooks import ecg_cleaning as c
-from Models import load_functions as f
+# import sys
+# sys.path.append('..')
+from utils import ecg_cleaning as c
 
 ################################ INTRODUCTION ##################################
 
 st.title("ECG Prediction")
 
+st.write("Let me show you how my model works! Pass me an age and I will tell \
+         you how a person's heart of this age is doing!")
+
 st.sidebar.markdown("# ECG Prediction")
 st.sidebar.markdown(
-"Given an ECG signal, I can use my RNN model to predict the diagnostic of that \
-individual with high accuracy (+80%).")
-st.sidebar.markdown("Some sample ECGs are with the following parameters:")
-st.sidebar.markdown("56, F, 161, 63")
-st.sidebar.markdown("25, M, 173.3, 83")
-st.sidebar.markdown("23, F, 161, 63")
-st.sidebar.markdown("49, F, 161, 58")
-st.sidebar.markdown("55, M, 173.3, 83")
+"Given an ECG signal, my recurrent deep neural network predicts the diagnostic \
+    outcome of the signal with over 80% accuracy.")
 
 
 ############################# PATIENT INFO FILE ################################
@@ -38,14 +34,14 @@ age = st.selectbox(
     'Age',
     tuple(str(num) for num in range(2, 90))
 )
-st.write(f'You selected: {age}.')
 
 # Sex
 sex = st.selectbox(
     'Sex',
     ('Male', 'Female')
 )
-st.write(f'You selected: {sex}.')
+
+st.write(f'An {age} year old {sex} can have an ECG like this: ')
 
 if sex == 'Male':
     s = 0
@@ -53,25 +49,23 @@ else:
     s = 1
 
 # Height
-height = st.selectbox(
-    'Height (cm)',
-    tuple(str(height) for height in np.sort(metadata['height'].unique()))
-)
-st.write(f'You selected: {height} cm.')
+# height = st.selectbox(
+#     'Height (cm)',
+#     tuple(str(height) for height in np.sort(metadata['height'].unique()))
+# )
+# st.write(f'You selected: {height} cm.')
 
 # Weight
-weight = st.selectbox(
-    'Weight (kg)',
-    tuple(str(weight) for weight in np.sort(metadata['weight'].unique()))
-)
-st.write(f'You selected: {weight} kg.')
+# weight = st.selectbox(
+#     'Weight (kg)',
+#     tuple(str(weight) for weight in np.sort(metadata['weight'].unique()))
+# )
+# st.write(f'You selected: {weight} kg.')
 
 ############################## GRAB SAMPLE ECG #################################
 
-signal = f.grab_sample(float(age), 
-                       s, 
-                       float(height), 
-                       float(weight), 
+signal = c.grab_sample(float(age), 
+                       s,  
                        path, 
                        metadata)
 
@@ -91,17 +85,17 @@ else:
 
     samp_ecg = pd.DataFrame(
         {
-            'Time': time,
+            'Time (seconds)': time,
             'Original ECG': signals
         }
     )
 
     chart = alt.Chart(samp_ecg).mark_line(color='blue').encode(
-        x=alt.X('Time'),
+        x=alt.X('Time (seconds)'),
         y=alt.Y('Original ECG'),
     ).interactive()
 
-    st.write("#### Lead I of the ECG Record")
+    st.write("#### Lead II of the ECG Record")
     st.altair_chart(chart, theme="streamlit", use_container_width=True)
 
 ########################### PREDICTIVE MODELLING ###############################
@@ -148,15 +142,15 @@ else:
     binary_array = (prediction > 0.5).astype(int).reshape(-1)
 
     st.markdown("#### Results")
-    st.write(f"A value of 1 means you're healthy, a value of 0 means you may \
-             be at risk!")
-    st.write(f"We calculated a score of ... {prediction[0][0]:.4f}")
+    st.write(f"A value above 0.5  means you're healthy, a value below 0.5 \
+             means you may be at risk!")
+    st.write(f"With the ECG signal above, my model predicted a score of ... {prediction[0][0]:.4f}")
 
     if binary_array == 1:
         
         st.markdown(
             "#### <div style='text-align: center'> \
-                Your heart looks great! </div>", 
+                Your heart looks great! 🎉 </div>", 
                 unsafe_allow_html=True
             )
         
@@ -164,6 +158,6 @@ else:
         st.markdown(
             "#### <div style='text-align: center'> \
                 We predicted something unusual! Consider booking an \
-                appointment with your doctor for a checkup soon! </div>", 
+                appointment with your doctor for a checkup soon! 🚨 </div>", 
                 unsafe_allow_html=True \
             )

@@ -1,4 +1,5 @@
 import numpy as np
+import wfdb 
 
 def baseline_removal(sig, freq_start, freq_stop, signal_samp_freq='low'):
     """This function will zero low frequency noise given an ECG signal using 
@@ -119,3 +120,20 @@ def high_freq_removal(sig, freq_start, freq_stop=None, signal_samp_freq='low'):
     new_sig = np.fft.ifft(np.fft.ifftshift(sig_fft)) / dt
     
     return np.real(new_sig)
+
+def grab_sample(age, sex, path, metadata):
+    
+    metadata = metadata[metadata['age'] == age]
+    metadata = metadata[metadata['sex'] == sex]
+    #metadata = metadata[metadata['height'] == height]
+    #metadata = metadata[metadata['weight'] == weight]
+    
+    if metadata.shape[0] == 0:
+        print("No sample ECG with these attributes!")
+    else:
+        temp_path = metadata.sample()['filename_lr'].iloc[0]
+    
+        signals = wfdb.rdsamp(path + temp_path, channels=[1])
+        X_data = np.array(signals[0])
+    
+        return X_data
