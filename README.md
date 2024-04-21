@@ -128,7 +128,7 @@ This last notebook contains our advanced modeling where we use Recurrent Neural 
 This project has come to its ending phase. All notebooks are being uploaded and are available to the public subject to license restrictions. However, further updates are possible in the near future as there are more possible steps for this project. 
 
 ### Next steps 
-As this project is ending its last phase, Convolutional Neural Networks have not been implemented yet. As such the next step would be to implement CNNs and see how they perform in contrast to RNNs and the other models. 
+As this project is ending its last phase, Convolutional Neural Networks have not been implemented yet. As such the next step would be to implement CNNs and see how they perform in contrast to RNNs and the other models. We also want to implement obtaining new ECG data through wearable devices and having the data be sent to our model. A possibility of this is through smart watches such as Apple watch, however the next steps would be figuring out how to implement the PDF format given into Python to allow our model for prediction. 
 
 <a id='setup'></a>
 ## 5 - Setup
