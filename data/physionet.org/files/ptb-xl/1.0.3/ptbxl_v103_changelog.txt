@@ -1,0 +1,163 @@
+####################################
+########### DUPLICATES #############
+####################################
+#### Change 1
+->drop row with ecg_id=137 [strat_fold=8]
+->keep row with ecg_id=138 [strat_fold=8]
+#### Change 2
+->drop row with ecg_id=139 [strat_fold=1]
+->keep row with ecg_id=7781 [strat_fold=4]
+#### Change 3
+->drop row with ecg_id=140 [strat_fold=9]
+->keep row with ecg_id=1370 [strat_fold=3]
+consensus: {'LVH': 100.0, 'SR': 0.0}
+consensus label derived from: {'LVH': 100.0, 'ISC_': 100.0, 'SR': 0.0},{'LVH': 100.0, 'SR': 0.0}
+#### Change 4
+->drop row with ecg_id=141 [strat_fold=2]
+->keep row with ecg_id=2509 [strat_fold=4]
+consensus: {'SR': 0.0, '1AVB': 100.0}
+consensus label derived from: {'1AVB': 100.0, 'NDT': 100.0, 'SR': 0.0},{'1AVB': 100.0, 'SR': 0.0}
+#### Change 5
+->drop row with ecg_id=142 [strat_fold=3]
+->keep row with ecg_id=13803 [strat_fold=6]
+consensus: {'SR': 0.0}
+consensus label derived from: {'IMI': 15.0, 'SR': 0.0},{'NST_': 100.0, 'SR': 0.0}
+#### Change 6
+!!! Both ids in test fold, so keep the one with higher id
+->drop row with ecg_id=143 [strat_fold=9]
+->keep row with ecg_id=144 [strat_fold=9]
+#### Change 7
+->drop row with ecg_id=145 [strat_fold=3]
+->keep row with ecg_id=463 [strat_fold=1]
+#### Change 8
+!!! Fold with higher ecg_id in test fold, so drop it and take the other one
+->drop row with ecg_id=11817 [strat_fold=10]
+->keep row with ecg_id=146 [strat_fold=7]
+#### Change 9
+->drop row with ecg_id=456 [strat_fold=1]
+->keep row with ecg_id=457 [strat_fold=1]
+#### Change 10
+->drop row with ecg_id=458 [strat_fold=7]
+->keep row with ecg_id=3797 [strat_fold=7]
+consensus: {'SR': 0.0}
+consensus label derived from: {'NDT': 100.0, 'SR': 0.0},{'LNGQT': 100.0, 'EL': 100.0, 'SR': 0.0}
+#### Change 11
+->drop row with ecg_id=459 [strat_fold=5]
+->keep row with ecg_id=460 [strat_fold=5]
+#### Change 12
+!!! Both ids in test fold, so keep the one with higher id
+->drop row with ecg_id=461 [strat_fold=9]
+->keep row with ecg_id=9823 [strat_fold=10]
+#### Change 13
+->drop row with ecg_id=462 [strat_fold=8]
+->keep row with ecg_id=13802 [strat_fold=5]
+#### Change 14
+!!! Fold with higher ecg_id in test fold, so drop it and take the other one
+->drop row with ecg_id=13796 [strat_fold=10]
+->keep row with ecg_id=1371 [strat_fold=4]
+consensus: {'ASMI': 100.0, 'ALMI': 100.0, '1AVB': 100.0, 'SR': 0.0}
+consensus label derived from: {'ASMI': 100.0, 'ALMI': 100.0, '1AVB': 100.0, 'SR': 0.0},{'ASMI': 100.0, 'ALMI': 100.0, 'IVCD': 100.0, '1AVB': 100.0, 'SR': 0.0}
+#### Change 15
+!!! Both ids in test fold, so keep the one with higher id
+->drop row with ecg_id=2506 [strat_fold=10]
+->keep row with ecg_id=2507 [strat_fold=10]
+#### Change 16
+->drop row with ecg_id=2511 [strat_fold=6]
+->keep row with ecg_id=7784 [strat_fold=8]
+#### Change 17
+->drop row with ecg_id=3795 [strat_fold=6]
+->keep row with ecg_id=3796 [strat_fold=6]
+consensus: {'SR': 0.0}
+consensus label derived from: {'ISCAL': 100.0, 'ISCAS': 100.0, 'SR': 0.0},{'INJAL': 100.0, 'INJAS': 100.0, 'SR': 0.0}
+#### Change 18
+!!! Both ids in test fold, so keep the one with higher id
+->drop row with ecg_id=3798 [strat_fold=9]
+->keep row with ecg_id=3799 [strat_fold=9]
+consensus: {'SR': 0.0, 'NST_': 100.0}
+consensus label derived from: {'NST_': 100.0, 'SR': 0.0},{'IMI': 15.0, 'NST_': 100.0, 'SR': 0.0}
+#### Change 19
+->drop row with ecg_id=3832 [strat_fold=9]
+->keep row with ecg_id=15768 [strat_fold=5]
+consensus: {'SR': 0.0, 'IMI': 15.0, 'NDT': 100.0}
+consensus label derived from: {'IMI': 15.0, 'NDT': 100.0, 'NT_': 0.0, 'SR': 0.0},{'IMI': 50.0, 'NDT': 100.0, 'SR': 0.0}
+#### Change 20
+->drop row with ecg_id=5817 [strat_fold=10]
+->keep row with ecg_id=9824 [strat_fold=3]
+consensus: {'SR': 0.0}
+consensus label derived from: {'NDT': 100.0, 'SR': 0.0},{'NORM': 50.0, 'SR': 0.0}
+#### Change 21
+!!! Both ids in test fold, so keep the one with higher id
+->drop row with ecg_id=7777 [strat_fold=9]
+->keep row with ecg_id=7778 [strat_fold=9]
+consensus: {'SR': 0.0}
+consensus label derived from: {'NST_': 50.0, 'PVC': 100.0, 'SR': 0.0},{'NORM': 100.0, 'SR': 0.0}
+#### Change 22
+->drop row with ecg_id=7779 [strat_fold=7]
+->keep row with ecg_id=7780 [strat_fold=7]
+consensus: {'ASMI': 100.0, 'SR': 0.0, 'ISC_': 100.0, 'LAFB': 100.0, 'LVH': 50.0}
+consensus label derived from: {'ASMI': 100.0, 'LVH': 50.0, 'ISC_': 100.0, 'LAFB': 100.0, 'LAO/LAE': 100.0, 'SR': 0.0},{'ASMI': 100.0, 'LAFB': 100.0, 'LVH': 100.0, 'ISC_': 100.0, 'SR': 0.0}
+#### Change 23
+!!! Both ids in test fold, so keep the one with higher id
+->drop row with ecg_id=7782 [strat_fold=10]
+->keep row with ecg_id=7783 [strat_fold=10]
+consensus: {'PACE': 0.0}
+consensus label derived from: {'PACE': 100.0},{'ASMI': 100.0, 'ALMI': 15.0, 'LAFB': 100.0, 'PVC': 100.0, 'PACE': 0.0}
+#### Change 24
+->drop row with ecg_id=9821 [strat_fold=2]
+->keep row with ecg_id=9822 [strat_fold=2]
+consensus: {'SR': 0.0, 'IMI': 15.0}
+consensus label derived from: {'IMI': 15.0, 'SR': 0.0},{'IMI': 15.0, 'PVC': 100.0, '1AVB': 100.0, 'SR': 0.0}
+#### Change 25
+->drop row with ecg_id=9825 [strat_fold=6]
+->keep row with ecg_id=11813 [strat_fold=1]
+#### Change 26
+->drop row with ecg_id=9888 [strat_fold=6]
+->keep row with ecg_id=9889 [strat_fold=4]
+#### Change 27
+!!! Fold with higher ecg_id in test fold, so drop it and take the other one
+->drop row with ecg_id=15742 [strat_fold=9]
+->keep row with ecg_id=11809 [strat_fold=7]
+#### Change 28
+->drop row with ecg_id=11810 [strat_fold=8]
+->keep row with ecg_id=15741 [strat_fold=3]
+consensus: {'ASMI': 100.0, 'SR': 0.0}
+consensus label derived from: {'ASMI': 100.0, 'SR': 0.0},{'ASMI': 100.0, 'INJAL': 100.0, 'SR': 0.0}
+#### Change 29
+!!! Both ids in test fold, so keep the one with higher id
+->drop row with ecg_id=11838 [strat_fold=9]
+->keep row with ecg_id=11839 [strat_fold=9]
+#### Change 30
+->drop row with ecg_id=13791 [strat_fold=4]
+->keep row with ecg_id=13792 [strat_fold=4]
+#### Change 31
+->drop row with ecg_id=13793 [strat_fold=8]
+->keep row with ecg_id=13794 [strat_fold=8]
+consensus: {'ASMI': 100.0, 'SR': 0.0}
+consensus label derived from: {'ASMI': 100.0, 'INJAL': 100.0, 'SR': 0.0},{'ASMI': 100.0, 'SR': 0.0}
+#### Change 32
+!!! Both ids in test fold, so keep the one with higher id
+->drop row with ecg_id=13797 [strat_fold=9]
+->keep row with ecg_id=13798 [strat_fold=9]
+#### Change 33
+->drop row with ecg_id=13799 [strat_fold=2]
+->keep row with ecg_id=13800 [strat_fold=2]
+#### Change 34
+->drop row with ecg_id=18150 [strat_fold=5]
+->keep row with ecg_id=18151 [strat_fold=5]
+
+####################################
+########### TRIPLICATES #############
+####################################
+#### Change 35
+->drop row with ecg_id=11814 [strat_fold=8]
+->drop row with ecg_id=11815 [strat_fold=8]
+->keep row with ecg_id=11816 [strat_fold=8]
+#### Change 36
+->drop row with ecg_id=3800 [strat_fold=9]
+->drop row with ecg_id=3801 [strat_fold=6]
+->keep row with ecg_id=3802 [strat_fold=6]
+consensus: {'ASMI': 50.0, 'IVCD': 100.0, 'IMI': 100.0}
+consensus label derived from: {'IMI': 100.0, 'ASMI': 100.0, 'IVCD': 100.0},{'IMI': 100.0, 'ASMI': 50.0, 'LVH': 50.0, 'ISC_': 100.0, 'IVCD': 100.0},{'IMI': 100.0, 'ASMI': 50.0, 'LVH': 50.0, 'ISC_': 100.0, 'IVCD': 100.0}
+
+Dropped ecg_ids [38 in total] =[137, 139, 140, 141, 142, 143, 145, 11817, 456, 458, 459, 461, 462, 13796, 2506, 2511, 3795, 3798, 3832, 5817, 7777, 7779, 7782, 9821, 9825, 9888, 15742, 11810, 11838, 13791, 13793, 13797, 13799, 18150, 11814, 11815, 3800, 3801]
+
