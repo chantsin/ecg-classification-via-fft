@@ -66,7 +66,7 @@ machine learning (ML) algorithms to predict ECG diagnostics.
 path = '../data/physionet.org/files/ptb-xl/1.0.3/records100/00000/'
 ecg = '00004_lr'
 file = path + ecg
-metadata = pd.read_csv('/cleaned_metadata.csv', index_col=0)
+metadata = pd.read_csv('Streamlit/cleaned_metadata.csv', index_col=0)
 
 signals, fields = wfdb.rdsamp(file, channels=[1])
 
