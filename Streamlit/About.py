@@ -68,7 +68,7 @@ path = 'data/physionet.org/files/ptb-xl/1.0.3/records100/00000/00004_lr'
 #file = path + ecg
 metadata = pd.read_csv('Streamlit/cleaned_metadata.csv', index_col=0)
 
-signals, fields = wfdb.rdsamp(path, channels=[1])
+signals, fields = wfdb.rdsamp(path) #, channels=[1])
 
 sampling_frequency = fields['fs']  # Sampling frequency
 sig_len = fields['sig_len'] # Signal length 
