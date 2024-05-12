@@ -25,7 +25,7 @@ st.sidebar.markdown(
 ############################# PATIENT INFO FILE ################################
 
 path = '../data/physionet.org/files/ptb-xl/1.0.3/'
-metadata = pd.read_csv('../data/cleaned_metadata.csv', index_col=0)
+metadata = pd.read_csv('Streamlit/cleaned_metadata.csv', index_col=0)
 
 ############################ USER INPUT SELECTION ##############################
 
